@@ -14,7 +14,7 @@ class Test_PlaceOrderSingleVeg(BaseClass):
         # cwd = os.getcwd()
         # driver_path = cwd+"/MainResource/BrowserDriver/chromedriver"
         # driver = webdriver.Chrome(executable_path=driver_path)
-
+        #
         # self.driver.maximize_window()
         # self.driver.get("https://rahulshettyacademy.com/seleniumPractise/#/")
         # self.driver.implicitly_wait(5)
