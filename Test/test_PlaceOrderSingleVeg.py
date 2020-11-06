@@ -1,10 +1,13 @@
 import os
-
+import time
 import pytest
 from selenium import webdriver
 from selenium.webdriver.support.select import Select
 
 from Main.BaseClass.BaseClass import BaseClass
+from Main.PageMethods.CartMethods import CartMethods
+from Main.PageMethods.CountryMethods import CountryMethods
+from Main.PageMethods.HomeMethods import HomeMethods
 
 
 class Test_PlaceOrderSingleVeg(BaseClass):
@@ -18,29 +21,52 @@ class Test_PlaceOrderSingleVeg(BaseClass):
         # self.driver.maximize_window()
         # self.driver.get("https://rahulshettyacademy.com/seleniumPractise/#/")
         # self.driver.implicitly_wait(5)
+        # self.open_application()
+        # # Click on Add to cart button
+        # self.driver.find_element_by_xpath("//button[text()='ADD TO CART'][1]").click()
+        #
+        # # Click on cart icon
+        # self.driver.find_element_by_xpath("//a[@class='cart-icon']/img").click()
+        #
+        # # Click on popup PROCEED TO CHECKOUT
+        # self.driver.find_element_by_xpath("//button[text()='PROCEED TO CHECKOUT']").click()
+        #
+        # # Click on place order
+        # self.driver.find_element_by_xpath("//button[text()='Place Order']").click()
+        #
+        # # Selecting country from drop down
+        # dropDown = self.driver.find_element_by_xpath("//select[@style='width: 200px;']")
+        # select = Select(dropDown)
+        # select.select_by_value("India")
+        #
+        # # Click on Agree checkbox
+        # self.driver.find_element_by_xpath("//input[@type = 'checkbox']").click()
+        #
+        # # Click on Proceed button
+        # self.driver.find_element_by_xpath("//button[text()= 'Proceed']").click()
+
+        objHomeMethods = HomeMethods(self.driver)
+        objCartMethods = CartMethods(self.driver)
+        objCountryMethods = CountryMethods(self.driver)
+
         self.open_application()
-        # Click on Add to cart button
-        self.driver.find_element_by_xpath("//button[text()='ADD TO CART'][1]").click()
+        objHomeMethods.ClickAddToCartBrocolli()
+        objHomeMethods.ClickToCart()
+        objHomeMethods.ClickToProceedToCheckoutBtn()
 
-        # Click on cart icon
-        self.driver.find_element_by_xpath("//a[@class='cart-icon']/img").click()
+        objCartMethods.ClickOnPlaceOrderBtn()
 
-        # Click on popup PROCEED TO CHECKOUT
-        self.driver.find_element_by_xpath("//button[text()='PROCEED TO CHECKOUT']").click()
-
-        # Click on place order
-        self.driver.find_element_by_xpath("//button[text()='Place Order']").click()
-
-        # Selecting country from drop down
-        dropDown = self.driver.find_element_by_xpath("//select[@style='width: 200px;']")
+        time.sleep(3)
+        dropDown = objCountryMethods.selectCountry()
         select = Select(dropDown)
         select.select_by_value("India")
 
-        # Click on Agree checkbox
-        self.driver.find_element_by_xpath("//input[@type = 'checkbox']").click()
+        time.sleep(3)
+        objCountryMethods.ClickAgreeCheckbox()
 
-        # Click on Proceed button
-        self.driver.find_element_by_xpath("//button[text()= 'Proceed']").click()
+        time.sleep(3)
+        objCountryMethods.ClickOnProceedBtn()
+
 
 
 
