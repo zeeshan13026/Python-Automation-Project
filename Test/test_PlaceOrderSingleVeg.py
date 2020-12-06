@@ -56,15 +56,15 @@ class Test_PlaceOrderSingleVeg(BaseClass):
 
         objCartMethods.ClickOnPlaceOrderBtn()
 
-        time.sleep(3)
+        #time.sleep(3)
         dropDown = objCountryMethods.selectCountry()
         select = Select(dropDown)
         select.select_by_value("India")
 
-        time.sleep(3)
+        time.sleep(1)
         objCountryMethods.ClickAgreeCheckbox()
 
-        time.sleep(3)
+        time.sleep(1)
         objCountryMethods.ClickOnProceedBtn()
 
 
